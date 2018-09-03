@@ -1,0 +1,108 @@
+﻿<div class="row no-gutters m-1">
+    <div class="card col-sm-12 col-md-10 col-lg-6 mx-auto shadow">
+        <div class="card-header text-center bg-info">
+            <h5 class="m-0">Sign up to our newsletter</h5>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("Apply", "Home", FormMethod.Post))
+            {
+
+                <form class="needs-validation" novalidate>
+                    <!-- Person -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputFirstName">First Name</label>
+                            <input type="text" class="form-control" name="FirstName" placeholder="First Name" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputLastName">Last Name</label>
+                            <input type="text" class="form-control" name="LastName" placeholder="Last Name" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Email</label>
+                            <input type="email" class="form-control" name="EmailAddress" placeholder="Email" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputBirthdate">Date of Birth</label>
+                            <input type="date" class="form-control" name="DateOfBirth" width="276" required>
+                        </div>
+                    </div>
+
+                    <!-- Car -->
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="inputState">Year</label>
+                            <select name="Year" class="form-control" required>
+                                <option value="">Choose...</option>
+                                @foreach (var i in ViewBag.YearList)
+                                {
+                                    <option value="@i">@i</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputState">Make</label>
+                            <select name="Make" class="form-control" required>
+                                <option value="">Choose...</option>
+                                @foreach (var i in ViewBag.MakeList)
+                                {
+                                    <option value="@i">@i</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputState">Model</label>
+                            <select name="Model" class="form-control" required>
+                                <option value="">Choose...</option>
+                                @foreach (var i in ViewBag.ModelList)
+                                {
+                                    <option value="@i">@i</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Unlucky -->
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="inputState">Have you had a DUI?</label>
+                            <div class="btn-group btn-group-toggle justify-content-center" data-toggle="buttons">
+                                <label class="btn btn-secondary">
+                                    <input type="radio" name="DUI" value="true" required> Yes
+                                </label>
+                                <label class="btn btn-secondary">
+                                    <input type="radio" name="DUI" value="false" required> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputState">Have you had a speeding ticket?</label>
+                            <input type="number" name="SpeedingTicket" value="" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputState">Coverage:</label>
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-secondary">
+                                    <input type="radio" name="Coverage" value="full" required> Full
+                                </label>
+                                <label class="btn btn-secondary">
+                                    <input type="radio" name="Coverage" value="liability" required> Liability
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            }
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script>
+        $('#datepicker').datepicker({
+            uiLibrary: 'bootstrap4'
+        });
+    </script>
+}
